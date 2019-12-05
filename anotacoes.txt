@@ -1,0 +1,22 @@
+forms {
+    > $ yarn add @rocketseat/unform
+    > import { Form, Input } from '@rocketseat/unform'
+    > Use o Form, e Input, adicione o atributo 'name' nos inputs
+    > Adicione o evento OnSubmit como um dos atributos do Form
+    > exemplo em : src\pages\SignUp\index.js
+}
+
+validação {
+    $ yarn add yup
+    > import * as Yup from 'yup';
+    > declara-se as validações, ex : {
+        const schema = Yup.object().shape({
+            email: Yup.string()
+                .email('msg_caso_validação_falhe')
+                .required('msg_caso_validação_falhe'),
+            password: Yup.string()
+                .required('msg_caso_validação_falhe'),
+        })
+    } 
+    > agora pega-se a constante que guarda as validações e passa para o <Form> como o valor do atributo schema, ex: <Form schema={schema}>
+}
