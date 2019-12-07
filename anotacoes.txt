@@ -22,3 +22,23 @@ validação {
     } 
     > agora pega-se a constante que guarda as validações e passa para o <Form> como o valor do atributo schema, ex: <Form schema={schema}>
 }
+
+armazenando dados no store do navegador e no redux {
+    > quando o usuario deixar a aplicação, os dados sejam mantidos no storage do navegador, e o estado se mantenha no redux
+    > $ yarn add redux-persist
+    > dentro de src/store, cria-se um arquivo chamado persistReducers.js
+    > dentro de persistReducers.js, import storage from 'redux-persist/lib/storage'; import { persistReducer } from 'redux-persist'; ( veja o arquivo )
+    > OBS > whitelist, é onde ficam guardados os nomes dos reducers no qual é necessario guardar informações
+    > o 'storage' acima usa o storage PADRAO da plataforma que estamos no momento, ex: se estivessemos no react-native, ele usaria o async storage
+    > agora importa-se 'persistStore' dentro de src/store/index.js ( veja o arquivo )
+    > tambem importa-se 'persistReducers.js' que foi o arquivo que foi criado agora a pouco, dentro de src/store/index.js
+    > coloque o 'rootReducer' como argumento do persistReducers
+    > cria-se uma nova variavel >> const persistor = persistStore(store)
+    > agora, em vez de exportar store, exporta-se >>> export { store, persistor };
+    > apos isso, arruma-se as referencias dos imports nos outros locais
+    > agora va em App.js e importe {PersistGate} from 'redux-persist/integration/react' e apos isso use-o como Component ( <PersistGate></PersistGate>, por dentro do store, e por volta do resto da aplicação ) ( veja o arquivo )
+    > <PersistGate> recebe um atributo chamado persistor, que é o variavel que esta sendo exportada dentro de src/store/index.js (veja o arquivo)
+    > PersistGate redenriza o conteudo das rotas somente depois que ele busca as informações dentro do storage
+    > agora pode-se perceber no reactotron que foram executadas 2 actions (persist/PERSIST, persist/REHYDRATE)
+    > PRONTO, agora os dados do store/estado ficam armazenados no storage
+}
