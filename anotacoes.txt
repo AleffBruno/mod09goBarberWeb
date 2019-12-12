@@ -38,7 +38,11 @@ armazenando dados no store do navegador e no redux {
     > apos isso, arruma-se as referencias dos imports nos outros locais
     > agora va em App.js e importe {PersistGate} from 'redux-persist/integration/react' e apos isso use-o como Component ( <PersistGate></PersistGate>, por dentro do store, e por volta do resto da aplicação ) ( veja o arquivo )
     > <PersistGate> recebe um atributo chamado persistor, que é o variavel que esta sendo exportada dentro de src/store/index.js (veja o arquivo)
-    > PersistGate redenriza o conteudo das rotas somente depois que ele busca as informações dentro do storage
+    > PersistGate redenriza o conteudo das rotas SOMENTE depois que ele busca as informações dentro do storage
     > agora pode-se perceber no reactotron que foram executadas 2 actions (persist/PERSIST, persist/REHYDRATE)
+    DICA {
+        > o saga consegue 'escutar' o persist/REHYDRATE, com isso executando funções
+        > pode-se ver os valores que o persist/REHYDRATE guarda usando o reactotron
+    }
     > PRONTO, agora os dados do store/estado ficam armazenados no storage
 }
