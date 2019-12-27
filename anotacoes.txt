@@ -46,3 +46,35 @@ armazenando dados no store do navegador e no redux {
     }
     > PRONTO, agora os dados do store/estado ficam armazenados no storage
 }
+
+adicionando um CSS a mais dependendo de props nos styled-components {
+    > adiciona-se import { css } from 'styled-components'
+    > agora pode-se passar atributos no Component e verificar no styled-components {
+        ex: <Badge hasUnread></Badge>, foi passado hasUnread = TRUE
+        > agora vamos no style.js e faça a verificação/ adicionar o css adicional
+        Arquivo: src\components\Notifications\styles.js
+        ${props => 
+        props.hasUnread &&
+        css`
+            &::after {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 8px;
+                height: 8px;
+                background: #ff892e;
+                content: '';
+                border-radius: 50%;
+            }
+        `}
+    }
+}
+
+scrollBar em elementos/ul personalizadas/ multiplas divs / listas personalizadas {
+    > isso foi usado para criar uma scrollBar para as Notifications
+    > $ yarn add react-perfect-scrollbar
+    > Cria-se um elemento <Scroll> no styles.js (src\components\Notifications\styles.js)
+    > coloque esse elemento dentro de <NotificationList>, e envolvendo as <Notifications>
+    > para criar o styled-component, é necessarop import PerfectScrollbar from 'react-perfect-scrollbar';
+    > é necessario importar o css do PerfectScrollbar dentro do styles/global.js (veja o arquivo)
+}
